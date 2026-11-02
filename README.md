@@ -1,4 +1,4 @@
-# 🚀 Modern Portfolio & Dynamic Admin Studio
+# 🚀 Template 6 - Modern Portfolio & Dynamic Admin Studio
 
 Website portofolio modern, elegan, dan responsif yang dibangun dengan **Next.js 15**, **React 19**, **Tailwind CSS v4**, dan **Firebase**. Dilengkapi dengan **Admin Studio (CMS)** mandiri untuk mengelola seluruh konten, tautan, tema warna, statistik pengunjung, dan portofolio secara dinamis dan *real-time*.
 
@@ -162,26 +162,6 @@ Website ini mendukung pembacaan link Google Drive secara langsung tanpa perlu me
 ├── package.json         # Dependensi proyek dan skrip npm
 └── README.md            # Dokumentasi lengkap proyek
 ```
-
----
-
-## 🏗️ Build & Deployment
-
-### Build untuk Produksi
-Website ini dikonfigurasi untuk mengekspor file statis HTML/CSS/JS murni ke direktori `out/`:
-```bash
-npm run build
-```
-
-### Deploy ke Firebase Hosting
-Pastikan Firebase CLI sudah terpasang (`npm install -g firebase-tools`):
-```bash
-firebase login
-firebase use YOUR_FIREBASE_PROJECT_ID
-firebase deploy
-```
-
-*(Website ini juga dapat di-deploy dengan mudah ke platform lain seperti **Vercel**, **Netlify**, atau **GitHub Pages**).*
 
 ---
 
