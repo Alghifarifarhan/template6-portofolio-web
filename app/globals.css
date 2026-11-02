@@ -1,0 +1,313 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --default-font: "Roboto", system-ui, -apple-system, sans-serif;
+    --heading-font: "Raleway", sans-serif;
+    --nav-font: "Poppins", sans-serif;
+
+    /* Theme colors matching original MyResume aesthetic with modern touch */
+    --background-color: #ffffff;
+    --text-color: #272829;
+    --heading-color: #45505b;
+    --accent-color: #0563bb;
+    --card-bg-color: #ffffff;
+    --card-text-color: #45505b;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    color: var(--text-color, #272829);
+    background-color: var(--background-color, #ffffff);
+    font-family: var(--default-font);
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    color: var(--heading-color, #45505b);
+    font-family: var(--heading-font);
+    transition: color 0.3s ease;
+  }
+
+  p {
+    color: var(--text-color, #272829);
+    transition: color 0.3s ease;
+  }
+}
+
+/* Custom CSS Styles for MyResume Next.js Theme */
+
+/* Header / Navigation Sidebar */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 100px;
+  transition: all ease-in-out 0.3s;
+  z-index: 9997;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (max-width: 1199px) {
+  .header {
+    left: -100px;
+    background: var(--header-card-bg, var(--card-bg-color, #ffffff));
+    backdrop-filter: blur(12px);
+    box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.15);
+  }
+
+  .header.header-show {
+    left: 0;
+  }
+}
+
+.navmenu {
+  padding: 0;
+}
+
+.navmenu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.navmenu a,
+.navmenu a:focus {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  margin-bottom: 12px;
+  border-radius: 50%;
+  background: #f2f3f5;
+  color: #45505b;
+  transition: 0.3s;
+  font-size: 20px;
+  position: relative;
+  text-decoration: none;
+}
+
+.navmenu a span {
+  display: none;
+  font-family: var(--nav-font);
+}
+
+@media (min-width: 1200px) {
+  .navmenu a span {
+    display: block;
+    position: absolute;
+    left: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--accent-color, #0563bb);
+    color: #fff;
+    padding: 6px 12px;
+    border-radius: 20px;
+    white-space: nowrap;
+    font-size: 13px;
+    font-weight: 500;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(5, 99, 187, 0.2);
+  }
+
+  .navmenu a:hover span,
+  .navmenu a.active span {
+    opacity: 1;
+    visibility: visible;
+    left: calc(100% + 10px);
+  }
+}
+
+.navmenu a:hover,
+.navmenu a.active,
+.navmenu li:hover > a {
+  color: #fff;
+  background: var(--accent-color, #0563bb);
+}
+
+/* Sections Global */
+section,
+.section {
+  color: var(--text-color, #272829);
+  background-color: var(--background-color, #ffffff);
+  padding: 60px 0;
+  overflow: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.section-title {
+  text-align: center;
+  padding-bottom: 40px;
+}
+
+.section-title h2 {
+  font-size: 32px;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  position: relative;
+  color: var(--heading-color, #45505b);
+}
+
+.section-title h2::before {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 120px;
+  height: 1px;
+  background: #ddd;
+  bottom: 1px;
+  left: calc(50% - 60px);
+}
+
+.section-title h2::after {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 40px;
+  height: 3px;
+  background: var(--accent-color, #0563bb);
+  bottom: 0;
+  left: calc(50% - 20px);
+}
+
+.section-title p {
+  margin-bottom: 0;
+  color: var(--text-color, #728394);
+  opacity: 0.85;
+}
+
+/* Typed cursor blink */
+@keyframes blink {
+  0% { opacity: 1; }
+  50% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+.typed-cursor {
+  display: inline-block;
+  margin-left: 2px;
+  animation: blink 0.7s infinite;
+}
+
+/* Resume Timeline */
+.resume-title {
+  color: var(--heading-color, #45505b);
+  font-size: 26px;
+  font-weight: 700;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.resume-item {
+  padding: 0 0 20px 20px;
+  margin-top: -2px;
+  border-left: 2px solid var(--accent-color, #0563bb);
+  position: relative;
+}
+
+.resume-item h4 {
+  line-height: 18px;
+  font-size: 18px;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-family: var(--nav-font);
+  color: var(--accent-color, #0563bb);
+  margin-bottom: 10px;
+}
+
+.resume-item h5 {
+  font-size: 14px;
+  background: rgba(0, 0, 0, 0.04);
+  padding: 5px 15px;
+  display: inline-block;
+  font-weight: 600;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  color: var(--text-color, #272829);
+}
+
+.resume-item::before {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border-radius: 50px;
+  left: -9px;
+  top: 0;
+  background: var(--background-color, #fff);
+  border: 2px solid var(--accent-color, #0563bb);
+}
+.resume-item p,
+.resume-item ul,
+.resume-item li {
+  color: var(--text-color, #272829);
+}
+
+/* Theme Card Styling */
+.theme-card {
+  background-color: var(--card-bg-color, #ffffff);
+  color: var(--card-text-color, #45505b);
+  border-color: var(--card-bg-color, #ffffff);
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hide scrollbar for Chrome, Safari, Opera and Firefox/Edge */
+.no-scrollbar::-webkit-scrollbar,
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar,
+.scrollbar-none {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+/* Custom Scrollbar on the right side of the web with transparent background/track */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+  background-color: transparent !important;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--accent-color, #0563bb);
+  border-radius: 9999px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+  transition: background-color 0.2s ease, opacity 0.2s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  filter: brightness(0.85);
+}
+
+::-webkit-scrollbar-corner {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+/* Firefox scrollbar support */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent-color, #0563bb) transparent;
+}
+
+
